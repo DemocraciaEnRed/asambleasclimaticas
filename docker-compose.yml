@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:3.6
+    ports:
+      - 27017:27017
+    volumes:
+      - ./tmp/db:/data/db
+
+  web: # App Web
+    image: ghcr.io/democraciaenred/asambleasclimaticas-web:1.0.0-beta11.4
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+
+  api:
+    image: ghcr.io/democraciaenred/asambleasclimaticas-api:1.0.1
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+
+  queue: # Notifier
+    image: ghcr.io/democraciaenred/asambleasclimaticas-api:1.0.1
+    env_file:
+      - .env
+    command: npm run queue
+    ports:
+      - "5000:3000"
+    depends_on:
+      - mongo
+    links:
+      - mongo      
