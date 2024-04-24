@@ -3,10 +3,15 @@
 
 # Resurgentes - Instalación (Producción)
 
+En este repositorio encontrarás el [docker-compose.yml](docker-compose.yml) y un archivo ejemplo de las variables de entorno que necesitan los componentes `example.env`. 
 
-En este repositorio encontrarás el [docker-compose.yml](docker-compose.yml)
+Primero debes generar el archivo de las variables de entorno partiendo `example.env`.
 
-Para comenzar, simplemente correr `docker-compose up` para descargar las imagenes, crear y correr los containers. Luego se puede acceder a la web desde [https://localhost:4000](https://localhost:4000)
+```bash
+cp example.env .env
+```
+
+Luego correr `docker-compose up` para descargar las imagenes, crear y correr los containers. Luego se puede acceder a la web desde [https://localhost:4000](https://localhost:4000)
 
 Este comando correrá los cuatro contenedores de docker necesarios para el funcionamiento del sistema. Para verlos `docker ps`
 
