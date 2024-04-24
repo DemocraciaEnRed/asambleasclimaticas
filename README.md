@@ -1,7 +1,6 @@
 
 ![Header](header-doc.png)
 
----
 ## Resurgentes
 
 ## Índice
